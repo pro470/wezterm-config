@@ -1,5 +1,5 @@
 local wezterm = require('wezterm')
-local platform = require('utils.platform')()
+local platform = require('utils.platform')
 local backdrops = require('utils.backdrops')
 local act = wezterm.action
 
@@ -69,6 +69,13 @@ local keys = {
    { key = 'ö', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
    { key = 'ä', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
+   -- tab: title
+   { key = '0',          mods = mod.SUPER,     action = act.EmitEvent('tabs.manual-update-tab-title') },
+   { key = '0',          mods = mod.SUPER_REV, action = act.EmitEvent('tabs.reset-tab-title') },
+
+   -- tab: hide tab-bar
+   { key = '9',          mods = mod.SUPER,     action = act.EmitEvent('tabs.toggle-tab-bar'), },
+
    -- window --
    -- spawn windows
    { key = 'n',          mods = mod.SUPER,     action = act.SpawnWindow },
@@ -99,15 +106,25 @@ local keys = {
       key = [[/]],
       mods = mod.SUPER_REV,
       action = act.InputSelector({
-         title = 'Select Background',
+         title = 'InputSelector: Select Background',
          choices = backdrops:choices(),
          fuzzy = true,
          fuzzy_description = 'Select Background: ',
          action = wezterm.action_callback(function(window, _pane, idx)
+            if not idx then
+               return
+            end
             ---@diagnostic disable-next-line: param-type-mismatch
             backdrops:set_img(window, tonumber(idx))
          end),
       }),
+   },
+   {
+      key = 'b',
+      mods = mod.SUPER,
+      action = wezterm.action_callback(function(window, _pane)
+         backdrops:toggle_focus(window)
+      end)
    },
 
    -- panes --

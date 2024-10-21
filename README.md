@@ -20,7 +20,9 @@
 
 - [**Background Image Selector**](https://github.com/KevinSilvester/wezterm-config/blob/master/utils/backdrops.lua)
 
-  Uses `wezterm.read_dir` to scan the `backdrops` directory for images.
+  - Cycle images
+  - Fuzzy search for image
+  - Toggle background image
 
   > See: [key bindings](#background-images) for usage
 
@@ -44,7 +46,7 @@
       > :bulb:<br>
       > The available graphics API choices change based on your OS.<br>
       > These options correspond to the APIs the `wgpu` crate (which powers WezTerm's gui in `WebGpu` mode)<br>
-      > currenly has support implemented for.<br>
+      > currently has support implemented for.<br>
       > See: <https://github.com/gfx-rs/wgpu#supported-platforms> for more info
 
       - Windows: `Dx12` > `Vulkan` > `OpenGl`
@@ -59,12 +61,118 @@
 
 - ##### Requirements:
 
-  - WezTerm `>= 20240127-113634-bbcac864`
+  - <details>
+      <summary><b>WezTerm</b></summary>
+
+    Minimum Version: `20240127-113634-bbcac864`<br>
+    Recommended Version: [`Nightly`](https://github.com/wez/wezterm/releases/nightly)
+
+    [Official Installation Page](https://wezfurlong.org/wezterm/installation.html)
+
+    **Windows**
+
+    - <details>
+      <summary>Install Stable</summary>
+
+      - Install with Scoop (non-portable)
+
+        ```sh
+        scoop bucket add extras
+        scoop install wezterm
+        ```
+
+      - Install with Scoop (portable)
+
+        ```sh
+        scoop bucket add k https://github.com/KevinSilvester/scoop-bucket
+        scoop install k/wezterm
+        ```
+
+      - Install with winget
+
+        ```sh
+        winget install wez.wezterm
+        ```
+
+      - Install with choco
+
+        ```sh
+        choco install wezterm -y
+        ```
+      </details>
+
+    - <details>
+      <summary>Install Nightly</summary>
+
+      - Install with Scoop (non-portable)
+
+        ```sh
+        scoop bucket add versions
+        scoop install wezterm-nightly
+        ```
+
+      - Install with Scoop (portable)
+
+        ```sh
+        scoop bucket add k https://github.com/KevinSilvester/scoop-bucket
+        scoop install k/wezterm-nightly
+        ```
+      </details>
+
+    > :bulb:<br>
+    > Toast notifications don't work in non-portable installations.<br>
+    > See issue <https://github.com/wez/wezterm/issues/5166> for more details
+  
+    ---
+
+    **MacOS**
+
+    - <details>
+      <summary>Install Stable</summary>
+
+      - Install with Homebrew
+
+        ```sh
+        brew install --cask wezterm
+        ```
+
+      - Install with MacPort
+
+        ```sh
+        sudo port selfupdate
+        sudo port install wezterm
+        ```
+      </details>
+
+    - <details>
+      <summary>Install Nighlty</summary>
+
+      - Install with Homebrew
+
+        ```sh
+        brew install --cask wezterm@nightly
+        ```
+
+      - Upgrade with Homebrew
+
+        ```sh
+        brew install --cask wezterm@nightly --no-quarantine --greedy-latest
+        ```
+      </details>
+
+    ---
+
+    **Linux**
+
+    Refer to the Linux installation page.<br>
+    <https://wezfurlong.org/wezterm/install/linux.html>
+
+    </details>
 
   - <details>
     <summary>JetBrainsMono Nerd Font</summary>
 
-    Install with HomeBrew (Macos)
+    Install with Homebrew (Macos)
 
     ```sh
     brew tap homebrew/cask-fonts
@@ -82,7 +190,6 @@
     >
     > - <https://www.nerdfonts.com/#home>
     > - <https://github.com/ryanoasis/nerd-fonts?#font-installation>
-
     </details/>
 
 &nbsp;
@@ -104,7 +211,7 @@
 
 ---
 
-### All Key Binbdings
+### All Key Bindings
 
 Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</kbd>(super reversed) keys.<br>
 
@@ -140,8 +247,8 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 
 | Keys                                          | Action               |
 | --------------------------------------------- | -------------------- |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>c</kbd> | Copy to Clipborad    |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd> | Paste from Clipborad |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>c</kbd> | Copy to Clipboard    |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd> | Paste from Clipboard |
 
 &nbsp;
 
@@ -173,6 +280,19 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 | <kbd>SUPER</kbd>+<kbd>]</kbd>     | Previous Tab   |
 | <kbd>SUPER_REV</kbd>+<kbd>[</kbd> | Move Tab Left  |
 | <kbd>SUPER_REV</kbd>+<kbd>]</kbd> | Move Tab Right |
+
+##### Tabs: Title
+
+| Keys                          | Action         |
+| ------------------------------| -------------- |
+| <kbd>SUPER</kbd>+<kbd>9</kbd> | Toggle tab bar |
+
+##### Tabs: Toggle Tab-bar
+
+| Keys                              | Action             |
+| --------------------------------- | ------------------ |
+| <kbd>SUPER</kbd>+<kbd>0</kbd>     | Rename Current Tab |
+| <kbd>SUPER_REV</kbd>+<kbd>0</kbd> | Undo Rename        |
 
 &nbsp;
 
@@ -214,12 +334,13 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 
 #### Background Images
 
-| Keys                              | Action                  |
-| --------------------------------- | ----------------------- |
-| <kbd>SUPER</kbd>+<kbd>/</kbd>     | Select Random Image     |
-| <kbd>SUPER</kbd>+<kbd>,</kbd>     | Cycle to next Image     |
-| <kbd>SUPER</kbd>+<kbd>.</kbd>     | Cycle to previous Image |
-| <kbd>SUPER_REV</kbd>+<kbd>/</kbd> | Fuzzy select Image      |
+| Keys                              | Action                       |
+| --------------------------------- | ---------------------------- |
+| <kbd>SUPER</kbd>+<kbd>/</kbd>     | Select Random Image          |
+| <kbd>SUPER</kbd>+<kbd>,</kbd>     | Cycle to next Image          |
+| <kbd>SUPER</kbd>+<kbd>.</kbd>     | Cycle to previous Image      |
+| <kbd>SUPER_REV</kbd>+<kbd>/</kbd> | Fuzzy select Image           |
+| <kbd>SUPER</kbd>+<kbd>b</kbd>     | Toggle background focus mode |
 
 &nbsp;
 

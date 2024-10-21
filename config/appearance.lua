@@ -20,8 +20,10 @@ return {
       },
       {
          source = { Color = colors.background },
-         height = '100%',
-         width = '100%',
+         height = '120%',
+         width = '120%',
+         vertical_offset = '-10%',
+         horizontal_offset = '-10%',
          opacity = 0.96,
       },
    },
@@ -39,10 +41,10 @@ return {
 
    -- window
    window_padding = {
-      left = 5,
-      right = 10,
-      top = 12,
-      bottom = 7,
+      left = 0,
+      right = 0,
+      top = 10,
+      bottom = 7.5,
    },
    window_close_confirmation = 'NeverPrompt',
    window_frame = {
@@ -50,8 +52,12 @@ return {
       -- font = fonts.font,
       -- font_size = fonts.font_size,
    },
+   -- inactive_pane_hsb = {
+   --    saturation = 0.9,
+   --    brightness = 0.65,
+   -- },
    inactive_pane_hsb = {
-      saturation = 0.9,
-      brightness = 0.65,
+      saturation = 1,
+      brightness = 1,
    },
 }
