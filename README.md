@@ -229,17 +229,17 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 
 #### Miscellaneous/Useful
 
-| Keys                          | Action                                      |
-| ----------------------------- | ------------------------------------------- |
-| <kbd>F1</kbd>                 | `ActivateCopyMode`                          |
-| <kbd>F2</kbd>                 | `ActivateCommandPalette`                    |
-| <kbd>F3</kbd>                 | `ShowLauncher`                              |
-| <kbd>F4</kbd>                 | `ShowLauncher` <sub>(tabs only)</sub>       |
-| <kbd>F5</kbd>                 | `ShowLauncher` <sub>(workspaces only)</sub> |
-| <kbd>F11</kbd>                | `ToggleFullScreen`                          |
-| <kbd>F12</kbd>                | `ShowDebugOverlay`                          |
-| <kbd>SUPER</kbd>+<kbd>f</kbd> | Search Text                                 |
-| <kbd>SUPER</kbd>+<kbd>u</kbd> | Open URL                                    |
+| Keys                              | Action                                      |
+| --------------------------------- | ------------------------------------------- |
+| <kbd>F1</kbd>                     | `ActivateCopyMode`                          |
+| <kbd>F2</kbd>                     | `ActivateCommandPalette`                    |
+| <kbd>F3</kbd>                     | `ShowLauncher`                              |
+| <kbd>F4</kbd>                     | `ShowLauncher` <sub>(tabs only)</sub>       |
+| <kbd>F5</kbd>                     | `ShowLauncher` <sub>(workspaces only)</sub> |
+| <kbd>F11</kbd>                    | `ToggleFullScreen`                          |
+| <kbd>F12</kbd>                    | `ShowDebugOverlay`                          |
+| <kbd>SUPER</kbd>+<kbd>f</kbd>     | Search Text                                 |
+| <kbd>SUPER_REV</kbd>+<kbd>u</kbd> | Open URL                                    |
 
 &nbsp;
 
@@ -284,7 +284,7 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 ##### Tabs: Title
 
 | Keys                          | Action         |
-| ------------------------------| -------------- |
+| ----------------------------- | -------------- |
 | <kbd>SUPER</kbd>+<kbd>9</kbd> | Toggle tab bar |
 
 ##### Tabs: Toggle Tab-bar
@@ -298,9 +298,11 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 
 #### Windows
 
-| Keys                          | Action        |
-| ----------------------------- | ------------- |
-| <kbd>SUPER</kbd>+<kbd>n</kbd> | `SpawnWindow` |
+| Keys                          | Action               |
+| ----------------------------- | -------------------- |
+| <kbd>SUPER</kbd>+<kbd>n</kbd> | `SpawnWindow`        |
+| <kbd>SUPER</kbd>+<kbd>=</kbd> | Increase Window Size |
+| <kbd>SUPER</kbd>+<kbd>-</kbd> | Decrease Window Size |
 
 &nbsp;
 
@@ -329,6 +331,15 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 | <kbd>SUPER_REV</kbd>+<kbd>h</kbd> | Move to Pane (Left)     |
 | <kbd>SUPER_REV</kbd>+<kbd>l</kbd> | Move to Pane (Right)    |
 | <kbd>SUPER_REV</kbd>+<kbd>p</kbd> | Swap with selected Pane |
+
+##### Panes: Scroll Pane
+
+| Keys                          | Action                               |
+| ----------------------------- | ------------------------------------ |
+| <kbd>SUPER</kbd>+<kbd>u</kbd> | Scroll Lines up <sub>5 lines</sub>   |
+| <kbd>SUPER</kbd>+<kbd>d</kbd> | Scroll Lines down <sub>5 lines</sub> |
+| <kbd>PageUp</kbd>             | Scroll Page up                       |
+| <kbd>PageDown</kbd>           | Scroll Page down                     |
 
 &nbsp;
 
