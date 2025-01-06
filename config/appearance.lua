@@ -1,4 +1,4 @@
-local gpu_adapters = require('utils.gpu_adapter')
+local gpu_adapters = require('utils.gpu-adapter')
 local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
 
@@ -9,6 +9,7 @@ return {
    webgpu_preferred_adapter = gpu_adapters:pick_best(),
    -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Dx12', 'IntegratedGpu'),
    -- webgpu_preferred_adapter = gpu_adapters:pick_manual('Gl', 'Other'),
+   underline_thickness = '1.5pt',
 
    -- cursor
    animation_fps = 120,
